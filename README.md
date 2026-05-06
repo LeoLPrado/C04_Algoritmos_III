@@ -72,7 +72,7 @@ Busca binária
     começa novamente considerando apenas a metade superior da 
     estrutura, ou a metade inferior, caso o elemento seja menor.
     - Exemplo: Buscar uma carta em um baralho ordenado.
-    - Complexidade: O(log2 ��), onde �� é o número de elementos.
+    - Complexidade: O(log2 n), onde n é o número de elementos.
 
 Buscas em estruturas de dados dinâmicas
     - Diferente das estruturas de dados estáticas, as estruturas de dados 
