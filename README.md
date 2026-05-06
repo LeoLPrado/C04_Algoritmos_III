@@ -49,7 +49,7 @@ Algoritmos estudados:
 
 ---
 
-### 3. Árvore binária
+### 3. Árvore
 Conceitos e estruturas de dados.
 
 #### Podem ser classificadas em:
