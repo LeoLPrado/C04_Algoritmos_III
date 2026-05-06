@@ -58,30 +58,29 @@ Conceitos e estruturas de dados.
 - estáticas ou dinâmicas
 
 #### Tipo de buscas
-Busca sequencial
-    - Nessa estratégia, cada elemento da estrutura de dados é visitado de 
-    maneira sequencial (de acordo com a ordem de inserção, por 
-    exemplo).
-    - Exemplo: Buscar uma carta em um baralho embaralhado.
-    - Complexidade: O(n), onde n é a quantidade de elemento
+    Busca sequencial
+        - Nessa estratégia, cada elemento da estrutura de dados é visitado de 
+        maneira sequencial (de acordo com a ordem de inserção, por 
+        exemplo).
+        - Exemplo: Buscar uma carta em um baralho embaralhado.
+        - Complexidade: O(n), onde n é a quantidade de elemento
 
-Busca binária
-    - Nessa estratégia, os elementos devem estar previamente ordenados.
-    - A busca começa por um elemento central.
-    - Caso o elemento buscado seja maior que o elemento central, a busca 
-    começa novamente considerando apenas a metade superior da 
-    estrutura, ou a metade inferior, caso o elemento seja menor.
-    - Exemplo: Buscar uma carta em um baralho ordenado.
-    - Complexidade: O(log2 n), onde n é o número de elementos.
+    Busca binária
+        - Nessa estratégia, os elementos devem estar previamente ordenados.
+        - A busca começa por um elemento central.
+        - Caso o elemento buscado seja maior que o elemento central, a busca 
+        começa novamente considerando apenas a metade superior da estrutura, ou a metade inferior, caso o elemento seja menor.
+        - Exemplo: Buscar uma carta em um baralho ordenado.
+        - Complexidade: O(log2 n), onde n é o número de elementos.
 
-Buscas em estruturas de dados dinâmicas
-    - Diferente das estruturas de dados estáticas, as estruturas de dados 
-    dinâmicas não são necessariamente lineares.
-    - Mesmo quando são lineares (as listas encadeadas, por exemplo),na 
-    prática essas estruturas podem dificultar a indexação por posição.
-    - Por exemplo, pode ser difícil saber qual é o elemento central.
-    - Para isso outras estruturas dinâmicas podem ser usadas para 
-    melhorar a eficiência das buscas
+    Buscas em estruturas de dados dinâmicas
+        - Diferente das estruturas de dados estáticas, as estruturas de dados 
+        dinâmicas não são necessariamente lineares.
+        - Mesmo quando são lineares (as listas encadeadas, por exemplo),na 
+        prática essas estruturas podem dificultar a indexação por posição.
+        - Por exemplo, pode ser difícil saber qual é o elemento central.
+        - Para isso outras estruturas dinâmicas podem ser usadas para 
+        melhorar a eficiência das buscas
 
 #### Árvore
     - É um tipo de estrutura de dados não linear e dinâmica.
@@ -96,7 +95,7 @@ Buscas em estruturas de dados dinâmicas
 
 #### Árvore Binária
     - É um tipo de árvore onde os nós podem ter no máximo dois filhos 
-    (filho da esquerda e filho da direita). 
+    (filho da esquerda e filho da direita).
     - É muito utilizada para otimização de buscas.
 
     - Árvore binária incompleta.
@@ -105,20 +104,24 @@ Buscas em estruturas de dados dinâmicas
 
 #### Árvore Binária de Busca
     - É um tipo de árvore binária que é construída com uma estratégia para facilitara busca binária.
+
     - A estratégia é já construir a estrutura de maneira ordenada:
         Ao inserir um novo nó, ele é comparado com os nós já existentes; 
         Começando da raiz, se o nó a ser inserido tem valor menor que o nó visitado, ele continua a verificação para a esquerda, senão para a direita;
         Se o nó visitado for um nó folha, o novo nó é inserido à esquerda se o valor for maior, ou à direita se for menor.
+
     - Complexidade da busca: O(h), onde h é a altura da árvore
 
 #### Complexidade da Árvore Binária de Busca
     - Pode-se perceber que, no pior caso, a complexidade de busca vai ser igual ao número de elementos, ou seja, O(n).
-    - Dessa forma, é necessário um mecanismo para garantir a construção da árvore de maneira a se aproximar ao máximo da complexidade da 
-    busca binária, ou seja, O(log2 n)
+
+    - Dessa forma, é necessário um mecanismo para garantir a construção da árvore de maneira a se aproximar ao máximo da complexidade da busca binária, ou seja, O(log2 n).
+
     - As árvores balanceadas são soluções para esse problema.
 
 #### Percursos
     - O algoritmo de varredura em uma árvore binária de busca, assim como em um grafo qualquer, pode ser uma BFS ou uma DFS.
+
     - Porém, como nessa estrutura de dados temos no máximo dois nós adjacentes (filho da direita e filho da esquerda) temos algumas particularidades em cada um desses algoritmos.
 
     Percurso em profundidade
@@ -128,17 +131,33 @@ Buscas em estruturas de dados dinâmicas
             Em-ordem;
             Pós-ordem;
 
-Operações:
-- inserção
-- pesquisa
-- remoção de elementos
+#### Operações
+    - inserção
+    - pesquisa
+    - remoção de elementos
 
-Percursos:
-- em profundidade
-- em largura
+#### Percursos
+    - em profundidade (dfs)
+    - em largura (bfs)
 
 Também inclui:
 - destruição de árvores
+
+#### Principais aplicações de árvores
+    - Organização hierárquica de dados
+        Quando existe relação de “pai → filho”.
+        Ex:
+        pastas do computador
+        organograma de empresa
+        árvore genealógica
+
+    - Busca rápida
+        Estruturas como Árvore Binária de Busca (BST) permitem buscar, inserir e remover elementos eficientemente (média O(log2 n)).
+        Banco de dados / índices (index)
+        Bancos usam B-Tree e B+ Tree para indexar dados e acelerar consultas (SELECT, WHERE, etc.).
+
+    - Compiladores
+        Código fonte vira uma Árvore Sintática Abstrata (AST) para o compilador interpretar expressões.
 
 ---
 
