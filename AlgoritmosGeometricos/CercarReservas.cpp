@@ -38,7 +38,7 @@ int orientacao(Ponto p1, Ponto p2, Ponto p3){
 }
 
 float distancia_quadrada(Ponto p1, Ponto p2){
-	return (p1.y-p2.y)*(p1.y-p2.y) + (p1.x-p2.x)*(p1.x-p2.x);
+	return sqrt((p1.y-p2.y)*(p1.y-p2.y) + (p1.x-p2.x)*(p1.x-p2.x));
 }
 
 int compare(const void *vp1, const void *vp2)
@@ -64,7 +64,7 @@ Ponto anterior_top(stack<Ponto> &S)
     return res;
 }
 
-double grahan_scan(Ponto pontos[], int n){
+stack<Ponto> grahan_scan(Ponto pontos[], int n){
 	int menor_y = 9999, menor_i;
 	
 	for(int i=0; i<n; i++){
@@ -91,10 +91,11 @@ double grahan_scan(Ponto pontos[], int n){
 		m++;  
 	}
 	
-	if (m < 3)
-		return 0;
-	
 	stack<Ponto> fecho;
+	
+	if (m < 3)
+		return fecho;
+	
 	fecho.push(pontos[0]);
 	fecho.push(pontos[1]);
 	fecho.push(pontos[2]);
@@ -110,33 +111,32 @@ double grahan_scan(Ponto pontos[], int n){
 		}
 		fecho.push(pontos[i]);
 	}
-	
-    Ponto primeiro = fecho.top();
-    Ponto anterior = primeiro;
+    return fecho;
+}
+
+float perimetro(stack<Ponto> pontos){
+    Ponto atual, anterior, primeiro;
+    anterior = primeiro = pontos.top();
+    pontos.pop();
+    float perimetro = 0;
     
-    fecho.pop();
-    
-    while(!fecho.empty())
-    {
-    	Ponto atual = fecho.top();
-    
-    	perimetro += sqrt(
-    		distancia_quadrada(anterior, atual)
-    	);
-    
-    	anterior = atual;
-    
-    	fecho.pop();
+    while(!pontos.empty()){
+        atual = pontos.top();
+        perimetro += distancia_quadrada(anterior, atual);
+        pontos.pop();
+        anterior = atual;
     }
     
-    perimetro += sqrt(distancia_quadrada(anterior, primeiro));
-    
+    perimetro += distancia_quadrada(anterior, primeiro);
     return perimetro;
 }
+
 int main(){
 	
-	Ponto pontos[10];
-
+	Ponto pontos[30];
+	float perimetro_total = 0;
+    stack<Ponto> fecho;
+    
 	int n;
 	cin >> n;
 
@@ -144,6 +144,9 @@ int main(){
 		cin >> pontos[i].x >> pontos[i].y;
 	}
 
-	cout << grahan_scan(pontos, n) << endl;
+	fecho = grahan_scan(pontos, n);
+	perimetro_total = perimetro(fecho);
+	cout << perimetro_total << endl;
+	
     return 0;
 }
